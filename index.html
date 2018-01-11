@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spelling Words</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  #sortable0, #sortable1, #sortable2, #sortable3 {
+    border: 1px solid #eee;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+  }
+  #other0, #other1, #other2, #other3 {
+    border: 1px solid #eee;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+  }
+  #sortable0 li, #sortable1 li, #sortable2 li, #sortable3 li, #other0 li, #other1 li, #other2 li, #other3 li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    width: 120px;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#sortable0, #sortable1, #sortable2, #sortable3" ).sortable({
+      connectWith: ".connectedSortable"
+    }).disableSelection();
+  } );
+  </script>
+<script type="text/javascript">
+function sub()
+{
+	//Reset color of all words and make unsorted red
+	var nums = document.getElementById("sortable0");
+    var listItems = nums.getElementsByTagName("li");
+	for (var i=0; i < listItems.length; i++) {
+		listItems[i].style.color = "red";
+	}
+	var nums = document.getElementById("sortable1");
+    var listItems = nums.getElementsByTagName("li");
+	for (var i=0; i < listItems.length; i++) {
+		listItems[i].style.color = "";
+	}
+	var nums = document.getElementById("sortable2");
+    var listItems = nums.getElementsByTagName("li");
+	for (var i=0; i < listItems.length; i++) {
+		listItems[i].style.color = "";
+	}
+	var nums = document.getElementById("sortable3");
+    var listItems = nums.getElementsByTagName("li");
+	for (var i=0; i < listItems.length; i++) {
+		listItems[i].style.color = "";
+	}
+	//Check the first real column
+	var idsInOrder_long = $("#sortable1").sortable("toArray", {attribute: 'id'});
+	var guessarray_long = $(idsInOrder_long.sort());
+	var wordslong = ["l1","l10","l11","l2","l20","l21","l22","l3","l4","l5","l6","l7"];
+	var arrayLength = wordslong.length;
+	for (var i = 0; i < arrayLength; i++) {
+	    if (idsInOrder_long.indexOf(wordslong[i]) == -1){
+	    	//alert(arrayLength + wordslong[i]);
+	    	document.getElementById(wordslong[i]).style.color = "red";
+	    }
+	}
+	//Check column 2	
+	var idsInOrder_short = $("#sortable2").sortable("toArray", {attribute: 'id'});
+	var guessarray_short = $(idsInOrder_short.sort());
+	var wordsshort = ["l12","l13","l18","l19","l23","l24","l25","l8","l9"];
+	var arrayLength = wordsshort.length;
+	for (var i = 0; i < arrayLength; i++) {
+	    if (idsInOrder_short.indexOf(wordsshort[i]) == -1){
+	    	//alert(arrayLength + wordsshort[i]);
+	    	document.getElementById(wordsshort[i]).style.color = "red";
+	    }
+	}
+	//Check column 3
+	var idsInOrder_odd = $("#sortable3").sortable("toArray", {attribute: 'id'});
+	var guessarray_odd = $(idsInOrder_odd.sort());
+	var wordsodd = ["l14","l15","l16","l17"];
+	var arrayLength = wordsodd.length;
+	for (var i = 0; i < arrayLength; i++) {
+	    if (idsInOrder_odd.indexOf(wordsodd[i]) == -1){
+	    	//alert(arrayLength + wordsodd[i]);
+	    	document.getElementById(wordsodd[i]).style.color = "red";
+	    }
+	}
+	
+	//alert("long: " + idsInOrder_long);
+	//alert("short: " + idsInOrder_short);
+	//alert("oddball: " + idsInOrder_odd);
+}
+</script>
+</head>
+<body>
+<h1>Spelling Words - Jan 12, 2018</h1> 
+<form>
+<p align="center">
+
+       <fieldset>
+          <legend>Good Luck</legend>
+		<ul id="other0" class="connectedSortable">
+          <li class="ui-state-default">Unsorted</li>
+        </ul>
+        <ul id="other1" class="connectedSortable">
+          <li class="ui-state-default">long oo</li>
+        </ul>
+        <ul id="other2" class="connectedSortable">
+          <li class="ui-state-default">short oo</li>
+        </ul>
+        <ul id="other3" class="connectedSortable">
+          <li class="ui-state-default">oddball</li>
+        </ul>
+		<br><br><br>
+		<ul id="sortable0" class="connectedSortable">
+		  <li id="l1", class="ui-state-highlight", value="1">soon</li>
+		  <li id="l2", class="ui-state-highlight", value="1">cool</li>
+		  <li id="l3", class="ui-state-highlight", value="1">troop</li>
+		  <li id="l4", class="ui-state-highlight", value="1">hoop</li>
+		  <li id="l5", class="ui-state-highlight", value="1">stool</li>
+		  <li id="l6", class="ui-state-highlight", value="1">proof</li>
+		  <li id="l7", class="ui-state-highlight", value="1">roost</li>
+		  <li id="l8", class="ui-state-highlight", value="2">soot</li>
+		  <li id="l9", class="ui-state-highlight", value="2">wool</li>
+		  <li id="l10", class="ui-state-highlight", value="1">root</li>
+		  <li id="l11", class="ui-state-highlight", value="1">tool</li>
+		  <li id="l12", class="ui-state-highlight", value="2">crook</li>
+		  <li id="l13", class="ui-state-highlight", value="2">wood</li>
+		  <li id="l14", class="ui-state-highlight", value="3">could</li>
+          <li id="l15", class="ui-state-highlight", value="3">would</li>
+          <li id="l16", class="ui-state-highlight", value="3">should</li>
+          <li id="l17", class="ui-state-highlight", value="3">route</li>
+          <li id="l18", class="ui-state-highlight", value="2">good</li>
+		  <li id="l19", class="ui-state-highlight", value="2">brook</li>
+		  <li id="l20", class="ui-state-highlight", value="1">fool</li>
+		  <li id="l21", class="ui-state-highlight", value="1">noon</li>
+		  <li id="l22", class="ui-state-highlight", value="1">groom</li>
+		  <li id="l23", class="ui-state-highlight", value="2">hood</li>
+		  <li id="l24", class="ui-state-highlight", value="2">stood</li>
+		  <li id="l25", class="ui-state-highlight", value="2">hook</li>
+		</ul>
+ 
+		<ul id="sortable1" class="connectedSortable">		  
+		</ul>
+		<ul id="sortable2" class="connectedSortable">          
+        </ul>
+        <ul id="sortable3" class="connectedSortable">
+        </ul>
+	</fieldset>
+	</p>
+	</form> 
+	<input type="button" value="Grade" onclick="sub()">
+	<input type="reset" value="Clear All">
+ 
+</body>
+</html>
